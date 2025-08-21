@@ -265,6 +265,13 @@ const MusicGenerator: React.FC = () => {
                     }}
                     disabled={isGenerating || songsLoading}
                     loading={songsLoading}
+                    // Mobile-specific fixes
+                    disablePortal={false}
+                    blurOnSelect={false}
+                    clearOnBlur={false}
+                    selectOnFocus
+                    handleHomeEndKeys
+                    openOnFocus
                     renderInput={(params) => (
                       <TextField
                         {...params}
@@ -291,6 +298,11 @@ const MusicGenerator: React.FC = () => {
                         }}
                         InputProps={{
                           ...params.InputProps,
+                          // Mobile-specific input props
+                          autoComplete: 'off',
+                          autoCorrect: 'off',
+                          autoCapitalize: 'off',
+                          spellCheck: false,
                           endAdornment: (
                             <>
                               {songsLoading && (
@@ -329,6 +341,34 @@ const MusicGenerator: React.FC = () => {
                       '& .MuiAutocomplete-clearIndicator': {
                         color: '#9c27b0',
                       }
+                    }}
+                    // Mobile-specific listbox props
+                    ListboxProps={{
+                      style: {
+                        maxHeight: '60vh', // Limit height on mobile
+                        fontSize: '16px', // Prevent zoom on iOS
+                      }
+                    }}
+                    // Improved mobile popup behavior  
+                    slotProps={{
+                      popper: {
+                        style: {
+                          zIndex: 9999,
+                        },
+                        placement: 'bottom-start',
+                        modifiers: [
+                          {
+                            name: 'preventOverflow',
+                            enabled: true,
+                            options: {
+                              altAxis: true,
+                              altBoundary: true,
+                              tether: true,
+                              rootBoundary: 'viewport',
+                            },
+                          },
+                        ],
+                      },
                     }}
                   />
                 </Paper>
