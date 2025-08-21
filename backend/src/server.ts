@@ -15,7 +15,7 @@ import { logger } from './utils/logger';
 import musicRoutes from './routes/musicRoutes';
 import healthRoutes from './routes/healthRoutes';
 import { initializeDatabase } from './services/database';
-import { initializeRedis } from './services/redis';
+// import { initializeRedis } from './services/redis'; // Temporarily disabled
 import { scheduleCleanupTasks } from './utils/cleanup';
 
 
@@ -103,9 +103,9 @@ const startServer = async () => {
     await initializeDatabase();
     logger.info('Database connection established');
     
-    // Initialize Redis connection
-    await initializeRedis();
-    logger.info('Redis connection established');
+    // Initialize Redis connection (temporarily disabled)
+    // await initializeRedis();
+    // logger.info('Redis connection established');
     
     // Schedule cleanup tasks
     scheduleCleanupTasks();
