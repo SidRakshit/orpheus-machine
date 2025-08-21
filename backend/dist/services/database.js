@@ -36,9 +36,10 @@ class Database {
             await client.query(`
         CREATE TABLE IF NOT EXISTS songs (
           id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-          title VARCHAR(255) NOT NULL,
+          midi_s3_key TEXT NOT NULL,
+          token_s3_key TEXT,
           artist VARCHAR(255) NOT NULL,
-          s3_url TEXT NOT NULL,
+          title VARCHAR(255) NOT NULL,
           created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
           updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
         );
@@ -114,6 +115,16 @@ class Database {
             client.release();
         }
     }
+    async getAllSongs() {
+        const client = await this.pool.connect();
+        try {
+            const result = await client.query('SELECT * FROM songs ORDER BY title, artist');
+            return result.rows;
+        }
+        finally {
+            client.release();
+        }
+    }
     async createJob(jobId, songs) {
         const client = await this.pool.connect();
         try {
@@ -174,6 +185,129 @@ class Database {
     async close() {
         await this.pool.end();
         logger_1.logger.info('Database connection pool closed');
+    }
+    extractBaseTitle(title) {
+        return title.replace(/\.\d+$/, '').trim();
+    }
+    async findAllVersionsOfSong(baseTitle) {
+        const client = await this.pool.connect();
+        try {
+            const query = `
+        SELECT * FROM songs 
+        WHERE REGEXP_REPLACE(LOWER(title), '\\.\\d+$', '') = LOWER($1)
+        ORDER BY title;
+      `;
+            const result = await client.query(query, [baseTitle]);
+            return result.rows;
+        }
+        finally {
+            client.release();
+        }
+    }
+    async searchSongsForFrontend(query, limit = 10) {
+        const client = await this.pool.connect();
+        try {
+            const searchQuery = `
+        SELECT DISTINCT ON (REGEXP_REPLACE(LOWER(title), '\\.\\d+$', '')) 
+          id, title, artist, midi_s3_key, created_at, updated_at,
+          REGEXP_REPLACE(title, '\\.\\d+$', '') as base_title
+        FROM songs 
+        WHERE 
+          LOWER(REGEXP_REPLACE(title, '\\.\\d+$', '')) LIKE LOWER($1)
+          OR LOWER(title) LIKE LOWER($1) 
+          OR LOWER(artist) LIKE LOWER($1)
+          OR LOWER(CONCAT(title, ' - ', artist)) LIKE LOWER($1)
+        ORDER BY 
+          REGEXP_REPLACE(LOWER(title), '\\.\\d+$', ''),
+          CASE 
+            WHEN LOWER(REGEXP_REPLACE(title, '\\.\\d+$', '')) = LOWER($2) THEN 1
+            WHEN LOWER(title) = LOWER($2) THEN 2
+            WHEN LOWER(CONCAT(title, ' - ', artist)) = LOWER($2) THEN 3
+            ELSE 4
+          END,
+          title
+        LIMIT $3;
+      `;
+            const searchTerm = `%${query}%`;
+            const result = await client.query(searchQuery, [searchTerm, query, limit]);
+            return result.rows.map(row => ({
+                ...row,
+                title: row.base_title || row.title
+            }));
+        }
+        finally {
+            client.release();
+        }
+    }
+    async findSongsByTitlesWithAllVersions(songTitles) {
+        const client = await this.pool.connect();
+        try {
+            const allSongs = [];
+            for (const songTitle of songTitles) {
+                const exactResult = await client.query('SELECT * FROM songs WHERE LOWER(title) = LOWER($1)', [songTitle]);
+                if (exactResult.rows.length > 0) {
+                    allSongs.push(...exactResult.rows);
+                }
+                else {
+                    const versionsResult = await client.query(`
+            SELECT * FROM songs 
+            WHERE REGEXP_REPLACE(LOWER(title), '\\.\\d+$', '') = LOWER($1)
+            ORDER BY title;
+          `, [songTitle]);
+                    if (versionsResult.rows.length > 0) {
+                        allSongs.push(...versionsResult.rows);
+                    }
+                }
+            }
+            const uniqueSongs = allSongs.filter((song, index, arr) => arr.findIndex(s => s.id === song.id) === index);
+            return uniqueSongs;
+        }
+        finally {
+            client.release();
+        }
+    }
+    async bulkInsertSongs(songsData) {
+        let insertedCount = 0;
+        const batchSize = 100;
+        for (let i = 0; i < songsData.length; i += batchSize) {
+            const batch = songsData.slice(i, i + batchSize);
+            const client = await this.pool.connect();
+            try {
+                await client.query('BEGIN');
+                for (const song of batch) {
+                    try {
+                        await client.query(`
+              INSERT INTO songs (title, artist, midi_s3_key, token_s3_key)
+              VALUES ($1, $2, $3, $4)
+            `, [song.title, song.artist, song.midi_s3_key, song.token_s3_key || null]);
+                        insertedCount++;
+                    }
+                    catch (error) {
+                        if (error.code === '23505') {
+                            logger_1.logger.warn(`Skipping duplicate song: ${song.title} - ${song.artist}`);
+                        }
+                        else {
+                            logger_1.logger.error(`Error inserting song ${song.title} - ${song.artist}:`, error);
+                            await client.query('ROLLBACK');
+                            await client.query('BEGIN');
+                        }
+                    }
+                }
+                await client.query('COMMIT');
+                if (i % 1000 === 0) {
+                    logger_1.logger.info(`Processed ${Math.min(i + batchSize, songsData.length)} / ${songsData.length} songs...`);
+                }
+            }
+            catch (error) {
+                await client.query('ROLLBACK');
+                logger_1.logger.error(`Error during batch ${i}-${i + batchSize}:`, error);
+            }
+            finally {
+                client.release();
+            }
+        }
+        logger_1.logger.info(`Successfully inserted ${insertedCount} songs from CSV`);
+        return insertedCount;
     }
 }
 exports.database = new Database();

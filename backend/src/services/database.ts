@@ -150,6 +150,16 @@ class Database {
     }
   }
 
+  async getAllSongs(): Promise<Song[]> {
+    const client = await this.pool.connect();
+    try {
+      const result = await client.query('SELECT * FROM songs ORDER BY title, artist');
+      return result.rows;
+    } finally {
+      client.release();
+    }
+  }
+
   async createJob(jobId: string, songs: string[]): Promise<void> {
     const client = await this.pool.connect();
     try {

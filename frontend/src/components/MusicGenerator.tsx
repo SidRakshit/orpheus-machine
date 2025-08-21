@@ -1,4 +1,4 @@
-import React, { useState,  useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import {
   Box,
   Card,
@@ -13,6 +13,7 @@ import {
   Stack,
   Paper,
   CircularProgress,
+  Autocomplete,
 } from '@mui/material';
 import { 
   PlayArrow, 
@@ -23,7 +24,7 @@ import {
   CloudDownload 
 } from '@mui/icons-material';
 import { useMutation, useQuery } from '@tanstack/react-query';
-import { generateMusic, getJobStatus, downloadFile } from '../services/api.ts';
+import { generateMusic, getJobStatus, downloadFile, getAllSongs, SongSuggestion } from '../services/api.ts';
 
 interface GenerationState {
   jobId: string | null;
@@ -35,6 +36,8 @@ interface GenerationState {
 
 const MusicGenerator: React.FC = () => {
   const [songs, setSongs] = useState<[string, string, string]>(['', '', '']);
+  const [allSongs, setAllSongs] = useState<SongSuggestion[]>([]);
+  const [filteredOptions, setFilteredOptions] = useState<[SongSuggestion[], SongSuggestion[], SongSuggestion[]]>([[], [], []]);
   const [generationState, setGenerationState] = useState<GenerationState>({
     jobId: null,
     status: 'idle',
@@ -42,6 +45,62 @@ const MusicGenerator: React.FC = () => {
     outputFileId: null,
     error: null,
   });
+
+  // Fetch all songs once when component mounts
+  const { data: songsData, isLoading: songsLoading } = useQuery({
+    queryKey: ['allSongs'],
+    queryFn: getAllSongs,
+    staleTime: 5 * 60 * 1000, // Cache for 5 minutes
+  });
+
+  // Update allSongs when data is loaded
+  useEffect(() => {
+    if (songsData?.songs) {
+      setAllSongs(songsData.songs);
+    }
+  }, [songsData]);
+
+  // Filter songs locally based on input
+  const filterSongs = useCallback((query: string): SongSuggestion[] => {
+    if (!query || query.trim().length < 1) {
+      return [];
+    }
+
+    const searchTerm = query.toLowerCase().trim();
+    return allSongs
+      .filter(song => 
+        song.title.toLowerCase().includes(searchTerm) ||
+        song.artist.toLowerCase().includes(searchTerm) ||
+        song.label.toLowerCase().includes(searchTerm)
+      )
+      .sort((a, b) => {
+        // Prioritize exact matches at the beginning
+        const aTitle = a.title.toLowerCase();
+        const bTitle = b.title.toLowerCase();
+        const aLabel = a.label.toLowerCase();
+        const bLabel = b.label.toLowerCase();
+        
+        if (aTitle.startsWith(searchTerm) && !bTitle.startsWith(searchTerm)) return -1;
+        if (bTitle.startsWith(searchTerm) && !aTitle.startsWith(searchTerm)) return 1;
+        if (aLabel.startsWith(searchTerm) && !bLabel.startsWith(searchTerm)) return -1;
+        if (bLabel.startsWith(searchTerm) && !aLabel.startsWith(searchTerm)) return 1;
+        
+        // Then alphabetical order
+        return a.label.localeCompare(b.label);
+      })
+      .slice(0, 15); // Limit to 15 suggestions
+  }, [allSongs]);
+
+  // Update filtered options when songs change
+  useEffect(() => {
+    const newFilteredOptions: [SongSuggestion[], SongSuggestion[], SongSuggestion[]] = [[], [], []];
+    
+    songs.forEach((song, index) => {
+      newFilteredOptions[index] = filterSongs(song);
+    });
+    
+    setFilteredOptions(newFilteredOptions);
+  }, [songs, filterSongs]);
 
   const generateMutation = useMutation({
     mutationFn: generateMusic,
@@ -85,9 +144,9 @@ const MusicGenerator: React.FC = () => {
     }
   }, [jobStatus]);
 
-  const handleSongChange = (index: number, value: string) => {
+  const handleSongChange = (index: number, value: string | null, selectedOption?: SongSuggestion | null) => {
     const newSongs = [...songs] as [string, string, string];
-    newSongs[index] = value;
+    newSongs[index] = value || '';
     setSongs(newSongs);
   };
 
@@ -175,6 +234,9 @@ const MusicGenerator: React.FC = () => {
               mb: 3 
             }}>
               🎵 Song Selection
+              {songsLoading && (
+                <CircularProgress size={16} sx={{ ml: 1 }} />
+              )}
             </Typography>
             <Stack spacing={3}>
               {songs.map((song, index) => (
@@ -188,30 +250,85 @@ const MusicGenerator: React.FC = () => {
                     borderRadius: 2,
                   }}
                 >
-                  <TextField
-                    fullWidth
-                    label={`Song ${index + 1}`}
-                    placeholder={
-                      index === 0 ? 'e.g., Bohemian Rhapsody - Queen' :
-                      index === 1 ? 'e.g., Stairway to Heaven - Led Zeppelin' :
-                      'e.g., Hotel California - Eagles'
-                    }
+                  <Autocomplete
+                    freeSolo
+                    options={filteredOptions[index]}
+                    getOptionLabel={(option) => typeof option === 'string' ? option : option.label}
                     value={song}
-                    onChange={(e) => handleSongChange(index, e.target.value)}
-                    disabled={isGenerating}
-                    variant="outlined"
+                    onChange={(event, newValue) => {
+                      const selectedOption = typeof newValue === 'object' ? newValue : null;
+                      const valueString = typeof newValue === 'string' ? newValue : newValue?.label || '';
+                      handleSongChange(index, valueString, selectedOption);
+                    }}
+                    onInputChange={(event, newInputValue) => {
+                      handleSongChange(index, newInputValue);
+                    }}
+                    disabled={isGenerating || songsLoading}
+                    loading={songsLoading}
+                    renderInput={(params) => (
+                      <TextField
+                        {...params}
+                        fullWidth
+                        label={`Song ${index + 1}`}
+                        placeholder={
+                          index === 0 ? 'e.g., Bohemian Rhapsody - Queen' :
+                          index === 1 ? 'e.g., Stairway to Heaven - Led Zeppelin' :
+                          'e.g., Hotel California - Eagles'
+                        }
+                        variant="outlined"
+                        sx={{
+                          '& .MuiOutlinedInput-root': {
+                            '& fieldset': {
+                              borderColor: 'rgba(156, 39, 176, 0.2)',
+                            },
+                            '&:hover fieldset': {
+                              borderColor: 'rgba(156, 39, 176, 0.4)',
+                            },
+                            '&.Mui-focused fieldset': {
+                              borderColor: '#9c27b0',
+                            },
+                          },
+                        }}
+                        InputProps={{
+                          ...params.InputProps,
+                          endAdornment: (
+                            <>
+                              {songsLoading && (
+                                <CircularProgress color="inherit" size={20} />
+                              )}
+                              {params.InputProps.endAdornment}
+                            </>
+                          ),
+                        }}
+                      />
+                    )}
+                    renderOption={(props, option) => (
+                      <Box component="li" {...props} sx={{ 
+                        py: 1,
+                        '&:hover': {
+                          backgroundColor: 'rgba(156, 39, 176, 0.08)',
+                        }
+                      }}>
+                        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                          <MusicNote sx={{ fontSize: 16, color: '#9c27b0' }} />
+                          <Box>
+                            <Typography variant="body2" sx={{ fontWeight: 500 }}>
+                              {option.title}
+                            </Typography>
+                            <Typography variant="caption" color="text.secondary">
+                              {option.artist}
+                            </Typography>
+                          </Box>
+                        </Box>
+                      </Box>
+                    )}
                     sx={{
-                      '& .MuiOutlinedInput-root': {
-                        '& fieldset': {
-                          borderColor: 'rgba(156, 39, 176, 0.2)',
-                        },
-                        '&:hover fieldset': {
-                          borderColor: 'rgba(156, 39, 176, 0.4)',
-                        },
-                        '&.Mui-focused fieldset': {
-                          borderColor: '#9c27b0',
-                        },
+                      '& .MuiAutocomplete-popupIndicator': {
+                        color: '#9c27b0',
                       },
+                      '& .MuiAutocomplete-clearIndicator': {
+                        color: '#9c27b0',
+                      }
                     }}
                   />
                 </Paper>
@@ -338,8 +455,8 @@ const MusicGenerator: React.FC = () => {
       {/* Info Section */}
       <Box mt={4} textAlign="center">
         <Typography variant="body2" color="text.secondary">
-          The AI will search for MIDI files matching your songs, blend their musical characteristics, 
-          and generate a unique composition synthesized as an MP3 file.
+          Start typing to search from our database of {allSongs.length} songs. The AI will find MIDI files matching your selections, 
+          blend their musical characteristics, and generate a unique composition synthesized as an MP3 file.
         </Typography>
       </Box>
     </Box>

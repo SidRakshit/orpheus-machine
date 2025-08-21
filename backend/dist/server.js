@@ -10,6 +10,7 @@ const morgan_1 = __importDefault(require("morgan"));
 const express_rate_limit_1 = __importDefault(require("express-rate-limit"));
 const dotenv_1 = __importDefault(require("dotenv"));
 const path_1 = __importDefault(require("path"));
+dotenv_1.default.config();
 const fs_1 = __importDefault(require("fs"));
 const errorHandler_1 = require("./middleware/errorHandler");
 const logger_1 = require("./utils/logger");
@@ -18,7 +19,6 @@ const healthRoutes_1 = __importDefault(require("./routes/healthRoutes"));
 const database_1 = require("./services/database");
 const redis_1 = require("./services/redis");
 const cleanup_1 = require("./utils/cleanup");
-dotenv_1.default.config();
 const app = (0, express_1.default)();
 const PORT = process.env.PORT || 3001;
 const createDirectories = () => {

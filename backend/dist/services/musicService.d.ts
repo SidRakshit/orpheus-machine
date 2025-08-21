@@ -10,4 +10,5 @@ export declare class MusicService {
     private downloadMidiFiles;
     searchSongs(query: string, limit?: number): Promise<Song[]>;
     getSongById(songId: string): Promise<Song | null>;
+    private extractBaseTitle;
 }

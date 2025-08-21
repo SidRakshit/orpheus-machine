@@ -89,11 +89,13 @@ router.get('/search', async (req: Request, res: Response, next: NextFunction) =>
     const limit = parseInt(req.query.limit as string) || 20;
 
     if (!query || query.trim().length < 1) {
-      return res.json({ songs: [] });
+      res.json({ songs: [] });
+      return;
     }
 
     if (query.trim().length < 2) {
-      return res.json({ songs: [] });
+      res.json({ songs: [] });
+      return;
     }
 
     logger.info(`Searching songs with query: "${query}"`);
@@ -115,6 +117,34 @@ router.get('/search', async (req: Request, res: Response, next: NextFunction) =>
 
   } catch (error) {
     logger.error('Song search failed:', error);
+    next(error);
+  }
+});
+
+// GET /api/songs - Get all songs for autocomplete
+router.get('/songs', async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    logger.info('Fetching all songs for autocomplete');
+
+    const songs = await database.getAllSongs();
+    
+    // Format songs for autocomplete (title - artist), sorted lexicographically
+    const formattedSongs = songs
+      .map((song: Song) => ({
+        id: song.id,
+        label: `${song.title} - ${song.artist}`,
+        title: song.title,
+        artist: song.artist
+      }))
+      .sort((a: { label: string }, b: { label: string }) => a.label.localeCompare(b.label));
+
+    res.json({
+      songs: formattedSongs,
+      total: formattedSongs.length
+    });
+
+  } catch (error) {
+    logger.error('Failed to fetch songs:', error);
     next(error);
   }
 });

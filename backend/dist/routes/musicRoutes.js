@@ -11,6 +11,7 @@ const errorHandler_1 = require("../middleware/errorHandler");
 const musicService_1 = require("../services/musicService");
 const jobManager_1 = require("../services/jobManager");
 const fileService_1 = require("../services/fileService");
+const database_1 = require("../services/database");
 const router = (0, express_1.Router)();
 const musicService = new musicService_1.MusicService();
 const jobManager = new jobManager_1.JobManager();
@@ -63,6 +64,58 @@ router.get('/status/:jobId', async (req, res, next) => {
         res.json(jobStatus);
     }
     catch (error) {
+        next(error);
+    }
+});
+router.get('/search', async (req, res, next) => {
+    try {
+        const query = req.query.q;
+        const limit = parseInt(req.query.limit) || 20;
+        if (!query || query.trim().length < 1) {
+            res.json({ songs: [] });
+            return;
+        }
+        if (query.trim().length < 2) {
+            res.json({ songs: [] });
+            return;
+        }
+        logger_1.logger.info(`Searching songs with query: "${query}"`);
+        const songs = await database_1.database.searchSongs(query.trim(), limit);
+        const formattedSongs = songs.map((song) => ({
+            id: song.id,
+            label: `${song.title} - ${song.artist}`,
+            title: song.title,
+            artist: song.artist
+        }));
+        res.json({
+            songs: formattedSongs,
+            total: formattedSongs.length
+        });
+    }
+    catch (error) {
+        logger_1.logger.error('Song search failed:', error);
+        next(error);
+    }
+});
+router.get('/songs', async (req, res, next) => {
+    try {
+        logger_1.logger.info('Fetching all songs for autocomplete');
+        const songs = await database_1.database.getAllSongs();
+        const formattedSongs = songs
+            .map((song) => ({
+            id: song.id,
+            label: `${song.title} - ${song.artist}`,
+            title: song.title,
+            artist: song.artist
+        }))
+            .sort((a, b) => a.label.localeCompare(b.label));
+        res.json({
+            songs: formattedSongs,
+            total: formattedSongs.length
+        });
+    }
+    catch (error) {
+        logger_1.logger.error('Failed to fetch songs:', error);
         next(error);
     }
 });

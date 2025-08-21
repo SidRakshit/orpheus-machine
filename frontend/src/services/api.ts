@@ -28,6 +28,18 @@ export interface JobStatusResponse {
   error?: string;
 }
 
+export interface SongSuggestion {
+  id: string;
+  label: string;
+  title: string;
+  artist: string;
+}
+
+export interface SearchResponse {
+  songs: SongSuggestion[];
+  total: number;
+}
+
 export const generateMusic = async (request: GenerationRequest): Promise<GenerationResponse> => {
   const response = await api.post('/generate', request);
   return response.data;
@@ -52,4 +64,20 @@ export const downloadFile = async (fileId: string): Promise<void> => {
   link.click();
   link.remove();
   window.URL.revokeObjectURL(url);
+};
+
+export const searchSongs = async (query: string, limit: number = 20): Promise<SearchResponse> => {
+  if (!query || query.trim().length < 2) {
+    return { songs: [], total: 0 };
+  }
+  
+  const response = await api.get('/search', {
+    params: { q: query.trim(), limit }
+  });
+  return response.data;
+};
+
+export const getAllSongs = async (): Promise<SearchResponse> => {
+  const response = await api.get('/songs');
+  return response.data;
 }; 

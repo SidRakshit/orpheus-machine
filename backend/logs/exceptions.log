@@ -1,0 +1,380 @@
+2025-08-18 17:48:12 [ERROR]: uncaughtException: ⨯ Unable to compile TypeScript:
+[96msrc/routes/musicRoutes.ts[0m:[93m86[0m:[93m23[0m - [91merror[0m[90m TS7030: [0mNot all code paths return a value.
+
+[7m86[0m router.get('/search', async (req: Request, res: Response, next: NextFunction) => {
+[7m  [0m [91m                      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+TSError: ⨯ Unable to compile TypeScript:
+[96msrc/routes/musicRoutes.ts[0m:[93m86[0m:[93m23[0m - [91merror[0m[90m TS7030: [0mNot all code paths return a value.
+
+[7m86[0m router.get('/search', async (req: Request, res: Response, next: NextFunction) => {
+[7m  [0m [91m                      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+    at createTSError (/Users/DohhyunOh/Documents/PersonalProjects/orpheusMachine/orpheus-machine/backend/node_modules/ts-node/src/index.ts:859:12)
+    at reportTSError (/Users/DohhyunOh/Documents/PersonalProjects/orpheusMachine/orpheus-machine/backend/node_modules/ts-node/src/index.ts:863:19)
+    at getOutput (/Users/DohhyunOh/Documents/PersonalProjects/orpheusMachine/orpheus-machine/backend/node_modules/ts-node/src/index.ts:1077:36)
+    at Object.compile (/Users/DohhyunOh/Documents/PersonalProjects/orpheusMachine/orpheus-machine/backend/node_modules/ts-node/src/index.ts:1433:41)
+    at Module.m._compile (/Users/DohhyunOh/Documents/PersonalProjects/orpheusMachine/orpheus-machine/backend/node_modules/ts-node/src/index.ts:1617:30)
+    at loadTS (node:internal/modules/cjs/loader:1826:10)
+    at Object.require.extensions.<computed> [as .ts] (/Users/DohhyunOh/Documents/PersonalProjects/orpheusMachine/orpheus-machine/backend/node_modules/ts-node/src/index.ts:1621:12)
+    at Module.load (node:internal/modules/cjs/loader:1469:32)
+    at Function._load (node:internal/modules/cjs/loader:1286:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:322:14)
+TSError: ⨯ Unable to compile TypeScript:
+[96msrc/routes/musicRoutes.ts[0m:[93m86[0m:[93m23[0m - [91merror[0m[90m TS7030: [0mNot all code paths return a value.
+
+[7m86[0m router.get('/search', async (req: Request, res: Response, next: NextFunction) => {
+[7m  [0m [91m                      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+    at createTSError (/Users/DohhyunOh/Documents/PersonalProjects/orpheusMachine/orpheus-machine/backend/node_modules/ts-node/src/index.ts:859:12)
+    at reportTSError (/Users/DohhyunOh/Documents/PersonalProjects/orpheusMachine/orpheus-machine/backend/node_modules/ts-node/src/index.ts:863:19)
+    at getOutput (/Users/DohhyunOh/Documents/PersonalProjects/orpheusMachine/orpheus-machine/backend/node_modules/ts-node/src/index.ts:1077:36)
+    at Object.compile (/Users/DohhyunOh/Documents/PersonalProjects/orpheusMachine/orpheus-machine/backend/node_modules/ts-node/src/index.ts:1433:41)
+    at Module.m._compile (/Users/DohhyunOh/Documents/PersonalProjects/orpheusMachine/orpheus-machine/backend/node_modules/ts-node/src/index.ts:1617:30)
+    at loadTS (node:internal/modules/cjs/loader:1826:10)
+    at Object.require.extensions.<computed> [as .ts] (/Users/DohhyunOh/Documents/PersonalProjects/orpheusMachine/orpheus-machine/backend/node_modules/ts-node/src/index.ts:1621:12)
+    at Module.load (node:internal/modules/cjs/loader:1469:32)
+    at Function._load (node:internal/modules/cjs/loader:1286:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:322:14)
+2025-08-18 17:48:38 [ERROR]: uncaughtException: ⨯ Unable to compile TypeScript:
+[96msrc/routes/musicRoutes.ts[0m:[93m86[0m:[93m23[0m - [91merror[0m[90m TS7030: [0mNot all code paths return a value.
+
+[7m86[0m router.get('/search', async (req: Request, res: Response, next: NextFunction) => {
+[7m  [0m [91m                      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+TSError: ⨯ Unable to compile TypeScript:
+[96msrc/routes/musicRoutes.ts[0m:[93m86[0m:[93m23[0m - [91merror[0m[90m TS7030: [0mNot all code paths return a value.
+
+[7m86[0m router.get('/search', async (req: Request, res: Response, next: NextFunction) => {
+[7m  [0m [91m                      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+    at createTSError (/Users/DohhyunOh/Documents/PersonalProjects/orpheusMachine/orpheus-machine/backend/node_modules/ts-node/src/index.ts:859:12)
+    at reportTSError (/Users/DohhyunOh/Documents/PersonalProjects/orpheusMachine/orpheus-machine/backend/node_modules/ts-node/src/index.ts:863:19)
+    at getOutput (/Users/DohhyunOh/Documents/PersonalProjects/orpheusMachine/orpheus-machine/backend/node_modules/ts-node/src/index.ts:1077:36)
+    at Object.compile (/Users/DohhyunOh/Documents/PersonalProjects/orpheusMachine/orpheus-machine/backend/node_modules/ts-node/src/index.ts:1433:41)
+    at Module.m._compile (/Users/DohhyunOh/Documents/PersonalProjects/orpheusMachine/orpheus-machine/backend/node_modules/ts-node/src/index.ts:1617:30)
+    at loadTS (node:internal/modules/cjs/loader:1826:10)
+    at Object.require.extensions.<computed> [as .ts] (/Users/DohhyunOh/Documents/PersonalProjects/orpheusMachine/orpheus-machine/backend/node_modules/ts-node/src/index.ts:1621:12)
+    at Module.load (node:internal/modules/cjs/loader:1469:32)
+    at Function._load (node:internal/modules/cjs/loader:1286:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:322:14)
+TSError: ⨯ Unable to compile TypeScript:
+[96msrc/routes/musicRoutes.ts[0m:[93m86[0m:[93m23[0m - [91merror[0m[90m TS7030: [0mNot all code paths return a value.
+
+[7m86[0m router.get('/search', async (req: Request, res: Response, next: NextFunction) => {
+[7m  [0m [91m                      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+    at createTSError (/Users/DohhyunOh/Documents/PersonalProjects/orpheusMachine/orpheus-machine/backend/node_modules/ts-node/src/index.ts:859:12)
+    at reportTSError (/Users/DohhyunOh/Documents/PersonalProjects/orpheusMachine/orpheus-machine/backend/node_modules/ts-node/src/index.ts:863:19)
+    at getOutput (/Users/DohhyunOh/Documents/PersonalProjects/orpheusMachine/orpheus-machine/backend/node_modules/ts-node/src/index.ts:1077:36)
+    at Object.compile (/Users/DohhyunOh/Documents/PersonalProjects/orpheusMachine/orpheus-machine/backend/node_modules/ts-node/src/index.ts:1433:41)
+    at Module.m._compile (/Users/DohhyunOh/Documents/PersonalProjects/orpheusMachine/orpheus-machine/backend/node_modules/ts-node/src/index.ts:1617:30)
+    at loadTS (node:internal/modules/cjs/loader:1826:10)
+    at Object.require.extensions.<computed> [as .ts] (/Users/DohhyunOh/Documents/PersonalProjects/orpheusMachine/orpheus-machine/backend/node_modules/ts-node/src/index.ts:1621:12)
+    at Module.load (node:internal/modules/cjs/loader:1469:32)
+    at Function._load (node:internal/modules/cjs/loader:1286:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:322:14)
+2025-08-18 17:50:07 [ERROR]: uncaughtException: ⨯ Unable to compile TypeScript:
+[96msrc/routes/musicRoutes.ts[0m:[93m86[0m:[93m23[0m - [91merror[0m[90m TS7030: [0mNot all code paths return a value.
+
+[7m86[0m router.get('/search', async (req: Request, res: Response, next: NextFunction) => {
+[7m  [0m [91m                      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+TSError: ⨯ Unable to compile TypeScript:
+[96msrc/routes/musicRoutes.ts[0m:[93m86[0m:[93m23[0m - [91merror[0m[90m TS7030: [0mNot all code paths return a value.
+
+[7m86[0m router.get('/search', async (req: Request, res: Response, next: NextFunction) => {
+[7m  [0m [91m                      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+    at createTSError (/Users/DohhyunOh/Documents/PersonalProjects/orpheusMachine/orpheus-machine/backend/node_modules/ts-node/src/index.ts:859:12)
+    at reportTSError (/Users/DohhyunOh/Documents/PersonalProjects/orpheusMachine/orpheus-machine/backend/node_modules/ts-node/src/index.ts:863:19)
+    at getOutput (/Users/DohhyunOh/Documents/PersonalProjects/orpheusMachine/orpheus-machine/backend/node_modules/ts-node/src/index.ts:1077:36)
+    at Object.compile (/Users/DohhyunOh/Documents/PersonalProjects/orpheusMachine/orpheus-machine/backend/node_modules/ts-node/src/index.ts:1433:41)
+    at Module.m._compile (/Users/DohhyunOh/Documents/PersonalProjects/orpheusMachine/orpheus-machine/backend/node_modules/ts-node/src/index.ts:1617:30)
+    at loadTS (node:internal/modules/cjs/loader:1826:10)
+    at Object.require.extensions.<computed> [as .ts] (/Users/DohhyunOh/Documents/PersonalProjects/orpheusMachine/orpheus-machine/backend/node_modules/ts-node/src/index.ts:1621:12)
+    at Module.load (node:internal/modules/cjs/loader:1469:32)
+    at Function._load (node:internal/modules/cjs/loader:1286:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:322:14)
+TSError: ⨯ Unable to compile TypeScript:
+[96msrc/routes/musicRoutes.ts[0m:[93m86[0m:[93m23[0m - [91merror[0m[90m TS7030: [0mNot all code paths return a value.
+
+[7m86[0m router.get('/search', async (req: Request, res: Response, next: NextFunction) => {
+[7m  [0m [91m                      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+    at createTSError (/Users/DohhyunOh/Documents/PersonalProjects/orpheusMachine/orpheus-machine/backend/node_modules/ts-node/src/index.ts:859:12)
+    at reportTSError (/Users/DohhyunOh/Documents/PersonalProjects/orpheusMachine/orpheus-machine/backend/node_modules/ts-node/src/index.ts:863:19)
+    at getOutput (/Users/DohhyunOh/Documents/PersonalProjects/orpheusMachine/orpheus-machine/backend/node_modules/ts-node/src/index.ts:1077:36)
+    at Object.compile (/Users/DohhyunOh/Documents/PersonalProjects/orpheusMachine/orpheus-machine/backend/node_modules/ts-node/src/index.ts:1433:41)
+    at Module.m._compile (/Users/DohhyunOh/Documents/PersonalProjects/orpheusMachine/orpheus-machine/backend/node_modules/ts-node/src/index.ts:1617:30)
+    at loadTS (node:internal/modules/cjs/loader:1826:10)
+    at Object.require.extensions.<computed> [as .ts] (/Users/DohhyunOh/Documents/PersonalProjects/orpheusMachine/orpheus-machine/backend/node_modules/ts-node/src/index.ts:1621:12)
+    at Module.load (node:internal/modules/cjs/loader:1469:32)
+    at Function._load (node:internal/modules/cjs/loader:1286:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:322:14)
+2025-08-18 17:51:03 [ERROR]: uncaughtException: ⨯ Unable to compile TypeScript:
+[96msrc/routes/musicRoutes.ts[0m:[93m86[0m:[93m23[0m - [91merror[0m[90m TS7030: [0mNot all code paths return a value.
+
+[7m86[0m router.get('/search', async (req: Request, res: Response, next: NextFunction) => {
+[7m  [0m [91m                      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+TSError: ⨯ Unable to compile TypeScript:
+[96msrc/routes/musicRoutes.ts[0m:[93m86[0m:[93m23[0m - [91merror[0m[90m TS7030: [0mNot all code paths return a value.
+
+[7m86[0m router.get('/search', async (req: Request, res: Response, next: NextFunction) => {
+[7m  [0m [91m                      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+    at createTSError (/Users/DohhyunOh/Documents/PersonalProjects/orpheusMachine/orpheus-machine/backend/node_modules/ts-node/src/index.ts:859:12)
+    at reportTSError (/Users/DohhyunOh/Documents/PersonalProjects/orpheusMachine/orpheus-machine/backend/node_modules/ts-node/src/index.ts:863:19)
+    at getOutput (/Users/DohhyunOh/Documents/PersonalProjects/orpheusMachine/orpheus-machine/backend/node_modules/ts-node/src/index.ts:1077:36)
+    at Object.compile (/Users/DohhyunOh/Documents/PersonalProjects/orpheusMachine/orpheus-machine/backend/node_modules/ts-node/src/index.ts:1433:41)
+    at Module.m._compile (/Users/DohhyunOh/Documents/PersonalProjects/orpheusMachine/orpheus-machine/backend/node_modules/ts-node/src/index.ts:1617:30)
+    at loadTS (node:internal/modules/cjs/loader:1826:10)
+    at Object.require.extensions.<computed> [as .ts] (/Users/DohhyunOh/Documents/PersonalProjects/orpheusMachine/orpheus-machine/backend/node_modules/ts-node/src/index.ts:1621:12)
+    at Module.load (node:internal/modules/cjs/loader:1469:32)
+    at Function._load (node:internal/modules/cjs/loader:1286:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:322:14)
+TSError: ⨯ Unable to compile TypeScript:
+[96msrc/routes/musicRoutes.ts[0m:[93m86[0m:[93m23[0m - [91merror[0m[90m TS7030: [0mNot all code paths return a value.
+
+[7m86[0m router.get('/search', async (req: Request, res: Response, next: NextFunction) => {
+[7m  [0m [91m                      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+    at createTSError (/Users/DohhyunOh/Documents/PersonalProjects/orpheusMachine/orpheus-machine/backend/node_modules/ts-node/src/index.ts:859:12)
+    at reportTSError (/Users/DohhyunOh/Documents/PersonalProjects/orpheusMachine/orpheus-machine/backend/node_modules/ts-node/src/index.ts:863:19)
+    at getOutput (/Users/DohhyunOh/Documents/PersonalProjects/orpheusMachine/orpheus-machine/backend/node_modules/ts-node/src/index.ts:1077:36)
+    at Object.compile (/Users/DohhyunOh/Documents/PersonalProjects/orpheusMachine/orpheus-machine/backend/node_modules/ts-node/src/index.ts:1433:41)
+    at Module.m._compile (/Users/DohhyunOh/Documents/PersonalProjects/orpheusMachine/orpheus-machine/backend/node_modules/ts-node/src/index.ts:1617:30)
+    at loadTS (node:internal/modules/cjs/loader:1826:10)
+    at Object.require.extensions.<computed> [as .ts] (/Users/DohhyunOh/Documents/PersonalProjects/orpheusMachine/orpheus-machine/backend/node_modules/ts-node/src/index.ts:1621:12)
+    at Module.load (node:internal/modules/cjs/loader:1469:32)
+    at Function._load (node:internal/modules/cjs/loader:1286:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:322:14)
+2025-08-18 17:51:22 [ERROR]: uncaughtException: ⨯ Unable to compile TypeScript:
+[96msrc/routes/musicRoutes.ts[0m:[93m86[0m:[93m23[0m - [91merror[0m[90m TS7030: [0mNot all code paths return a value.
+
+[7m86[0m router.get('/search', async (req: Request, res: Response, next: NextFunction) => {
+[7m  [0m [91m                      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+TSError: ⨯ Unable to compile TypeScript:
+[96msrc/routes/musicRoutes.ts[0m:[93m86[0m:[93m23[0m - [91merror[0m[90m TS7030: [0mNot all code paths return a value.
+
+[7m86[0m router.get('/search', async (req: Request, res: Response, next: NextFunction) => {
+[7m  [0m [91m                      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+    at createTSError (/Users/DohhyunOh/Documents/PersonalProjects/orpheusMachine/orpheus-machine/backend/node_modules/ts-node/src/index.ts:859:12)
+    at reportTSError (/Users/DohhyunOh/Documents/PersonalProjects/orpheusMachine/orpheus-machine/backend/node_modules/ts-node/src/index.ts:863:19)
+    at getOutput (/Users/DohhyunOh/Documents/PersonalProjects/orpheusMachine/orpheus-machine/backend/node_modules/ts-node/src/index.ts:1077:36)
+    at Object.compile (/Users/DohhyunOh/Documents/PersonalProjects/orpheusMachine/orpheus-machine/backend/node_modules/ts-node/src/index.ts:1433:41)
+    at Module.m._compile (/Users/DohhyunOh/Documents/PersonalProjects/orpheusMachine/orpheus-machine/backend/node_modules/ts-node/src/index.ts:1617:30)
+    at loadTS (node:internal/modules/cjs/loader:1826:10)
+    at Object.require.extensions.<computed> [as .ts] (/Users/DohhyunOh/Documents/PersonalProjects/orpheusMachine/orpheus-machine/backend/node_modules/ts-node/src/index.ts:1621:12)
+    at Module.load (node:internal/modules/cjs/loader:1469:32)
+    at Function._load (node:internal/modules/cjs/loader:1286:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:322:14)
+TSError: ⨯ Unable to compile TypeScript:
+[96msrc/routes/musicRoutes.ts[0m:[93m86[0m:[93m23[0m - [91merror[0m[90m TS7030: [0mNot all code paths return a value.
+
+[7m86[0m router.get('/search', async (req: Request, res: Response, next: NextFunction) => {
+[7m  [0m [91m                      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+    at createTSError (/Users/DohhyunOh/Documents/PersonalProjects/orpheusMachine/orpheus-machine/backend/node_modules/ts-node/src/index.ts:859:12)
+    at reportTSError (/Users/DohhyunOh/Documents/PersonalProjects/orpheusMachine/orpheus-machine/backend/node_modules/ts-node/src/index.ts:863:19)
+    at getOutput (/Users/DohhyunOh/Documents/PersonalProjects/orpheusMachine/orpheus-machine/backend/node_modules/ts-node/src/index.ts:1077:36)
+    at Object.compile (/Users/DohhyunOh/Documents/PersonalProjects/orpheusMachine/orpheus-machine/backend/node_modules/ts-node/src/index.ts:1433:41)
+    at Module.m._compile (/Users/DohhyunOh/Documents/PersonalProjects/orpheusMachine/orpheus-machine/backend/node_modules/ts-node/src/index.ts:1617:30)
+    at loadTS (node:internal/modules/cjs/loader:1826:10)
+    at Object.require.extensions.<computed> [as .ts] (/Users/DohhyunOh/Documents/PersonalProjects/orpheusMachine/orpheus-machine/backend/node_modules/ts-node/src/index.ts:1621:12)
+    at Module.load (node:internal/modules/cjs/loader:1469:32)
+    at Function._load (node:internal/modules/cjs/loader:1286:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:322:14)
+2025-08-18 18:03:39 [ERROR]: uncaughtException: ⨯ Unable to compile TypeScript:
+[96msrc/routes/musicRoutes.ts[0m:[93m86[0m:[93m23[0m - [91merror[0m[90m TS7030: [0mNot all code paths return a value.
+
+[7m86[0m router.get('/search', async (req: Request, res: Response, next: NextFunction) => {
+[7m  [0m [91m                      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+TSError: ⨯ Unable to compile TypeScript:
+[96msrc/routes/musicRoutes.ts[0m:[93m86[0m:[93m23[0m - [91merror[0m[90m TS7030: [0mNot all code paths return a value.
+
+[7m86[0m router.get('/search', async (req: Request, res: Response, next: NextFunction) => {
+[7m  [0m [91m                      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+    at createTSError (/Users/DohhyunOh/Documents/PersonalProjects/orpheusMachine/orpheus-machine/backend/node_modules/ts-node/src/index.ts:859:12)
+    at reportTSError (/Users/DohhyunOh/Documents/PersonalProjects/orpheusMachine/orpheus-machine/backend/node_modules/ts-node/src/index.ts:863:19)
+    at getOutput (/Users/DohhyunOh/Documents/PersonalProjects/orpheusMachine/orpheus-machine/backend/node_modules/ts-node/src/index.ts:1077:36)
+    at Object.compile (/Users/DohhyunOh/Documents/PersonalProjects/orpheusMachine/orpheus-machine/backend/node_modules/ts-node/src/index.ts:1433:41)
+    at Module.m._compile (/Users/DohhyunOh/Documents/PersonalProjects/orpheusMachine/orpheus-machine/backend/node_modules/ts-node/src/index.ts:1617:30)
+    at loadTS (node:internal/modules/cjs/loader:1826:10)
+    at Object.require.extensions.<computed> [as .ts] (/Users/DohhyunOh/Documents/PersonalProjects/orpheusMachine/orpheus-machine/backend/node_modules/ts-node/src/index.ts:1621:12)
+    at Module.load (node:internal/modules/cjs/loader:1469:32)
+    at Function._load (node:internal/modules/cjs/loader:1286:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:322:14)
+TSError: ⨯ Unable to compile TypeScript:
+[96msrc/routes/musicRoutes.ts[0m:[93m86[0m:[93m23[0m - [91merror[0m[90m TS7030: [0mNot all code paths return a value.
+
+[7m86[0m router.get('/search', async (req: Request, res: Response, next: NextFunction) => {
+[7m  [0m [91m                      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+    at createTSError (/Users/DohhyunOh/Documents/PersonalProjects/orpheusMachine/orpheus-machine/backend/node_modules/ts-node/src/index.ts:859:12)
+    at reportTSError (/Users/DohhyunOh/Documents/PersonalProjects/orpheusMachine/orpheus-machine/backend/node_modules/ts-node/src/index.ts:863:19)
+    at getOutput (/Users/DohhyunOh/Documents/PersonalProjects/orpheusMachine/orpheus-machine/backend/node_modules/ts-node/src/index.ts:1077:36)
+    at Object.compile (/Users/DohhyunOh/Documents/PersonalProjects/orpheusMachine/orpheus-machine/backend/node_modules/ts-node/src/index.ts:1433:41)
+    at Module.m._compile (/Users/DohhyunOh/Documents/PersonalProjects/orpheusMachine/orpheus-machine/backend/node_modules/ts-node/src/index.ts:1617:30)
+    at loadTS (node:internal/modules/cjs/loader:1826:10)
+    at Object.require.extensions.<computed> [as .ts] (/Users/DohhyunOh/Documents/PersonalProjects/orpheusMachine/orpheus-machine/backend/node_modules/ts-node/src/index.ts:1621:12)
+    at Module.load (node:internal/modules/cjs/loader:1469:32)
+    at Function._load (node:internal/modules/cjs/loader:1286:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:322:14)
+2025-08-18 18:04:40 [ERROR]: uncaughtException: ⨯ Unable to compile TypeScript:
+[96msrc/routes/musicRoutes.ts[0m:[93m86[0m:[93m23[0m - [91merror[0m[90m TS7030: [0mNot all code paths return a value.
+
+[7m86[0m router.get('/search', async (req: Request, res: Response, next: NextFunction) => {
+[7m  [0m [91m                      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+TSError: ⨯ Unable to compile TypeScript:
+[96msrc/routes/musicRoutes.ts[0m:[93m86[0m:[93m23[0m - [91merror[0m[90m TS7030: [0mNot all code paths return a value.
+
+[7m86[0m router.get('/search', async (req: Request, res: Response, next: NextFunction) => {
+[7m  [0m [91m                      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+    at createTSError (/Users/DohhyunOh/Documents/PersonalProjects/orpheusMachine/orpheus-machine/backend/node_modules/ts-node/src/index.ts:859:12)
+    at reportTSError (/Users/DohhyunOh/Documents/PersonalProjects/orpheusMachine/orpheus-machine/backend/node_modules/ts-node/src/index.ts:863:19)
+    at getOutput (/Users/DohhyunOh/Documents/PersonalProjects/orpheusMachine/orpheus-machine/backend/node_modules/ts-node/src/index.ts:1077:36)
+    at Object.compile (/Users/DohhyunOh/Documents/PersonalProjects/orpheusMachine/orpheus-machine/backend/node_modules/ts-node/src/index.ts:1433:41)
+    at Module.m._compile (/Users/DohhyunOh/Documents/PersonalProjects/orpheusMachine/orpheus-machine/backend/node_modules/ts-node/src/index.ts:1617:30)
+    at loadTS (node:internal/modules/cjs/loader:1826:10)
+    at Object.require.extensions.<computed> [as .ts] (/Users/DohhyunOh/Documents/PersonalProjects/orpheusMachine/orpheus-machine/backend/node_modules/ts-node/src/index.ts:1621:12)
+    at Module.load (node:internal/modules/cjs/loader:1469:32)
+    at Function._load (node:internal/modules/cjs/loader:1286:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:322:14)
+TSError: ⨯ Unable to compile TypeScript:
+[96msrc/routes/musicRoutes.ts[0m:[93m86[0m:[93m23[0m - [91merror[0m[90m TS7030: [0mNot all code paths return a value.
+
+[7m86[0m router.get('/search', async (req: Request, res: Response, next: NextFunction) => {
+[7m  [0m [91m                      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+    at createTSError (/Users/DohhyunOh/Documents/PersonalProjects/orpheusMachine/orpheus-machine/backend/node_modules/ts-node/src/index.ts:859:12)
+    at reportTSError (/Users/DohhyunOh/Documents/PersonalProjects/orpheusMachine/orpheus-machine/backend/node_modules/ts-node/src/index.ts:863:19)
+    at getOutput (/Users/DohhyunOh/Documents/PersonalProjects/orpheusMachine/orpheus-machine/backend/node_modules/ts-node/src/index.ts:1077:36)
+    at Object.compile (/Users/DohhyunOh/Documents/PersonalProjects/orpheusMachine/orpheus-machine/backend/node_modules/ts-node/src/index.ts:1433:41)
+    at Module.m._compile (/Users/DohhyunOh/Documents/PersonalProjects/orpheusMachine/orpheus-machine/backend/node_modules/ts-node/src/index.ts:1617:30)
+    at loadTS (node:internal/modules/cjs/loader:1826:10)
+    at Object.require.extensions.<computed> [as .ts] (/Users/DohhyunOh/Documents/PersonalProjects/orpheusMachine/orpheus-machine/backend/node_modules/ts-node/src/index.ts:1621:12)
+    at Module.load (node:internal/modules/cjs/loader:1469:32)
+    at Function._load (node:internal/modules/cjs/loader:1286:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:322:14)
+2025-08-18 18:04:51 [ERROR]: uncaughtException: ⨯ Unable to compile TypeScript:
+[96msrc/routes/musicRoutes.ts[0m:[93m86[0m:[93m23[0m - [91merror[0m[90m TS7030: [0mNot all code paths return a value.
+
+[7m86[0m router.get('/search', async (req: Request, res: Response, next: NextFunction) => {
+[7m  [0m [91m                      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+TSError: ⨯ Unable to compile TypeScript:
+[96msrc/routes/musicRoutes.ts[0m:[93m86[0m:[93m23[0m - [91merror[0m[90m TS7030: [0mNot all code paths return a value.
+
+[7m86[0m router.get('/search', async (req: Request, res: Response, next: NextFunction) => {
+[7m  [0m [91m                      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+    at createTSError (/Users/DohhyunOh/Documents/PersonalProjects/orpheusMachine/orpheus-machine/backend/node_modules/ts-node/src/index.ts:859:12)
+    at reportTSError (/Users/DohhyunOh/Documents/PersonalProjects/orpheusMachine/orpheus-machine/backend/node_modules/ts-node/src/index.ts:863:19)
+    at getOutput (/Users/DohhyunOh/Documents/PersonalProjects/orpheusMachine/orpheus-machine/backend/node_modules/ts-node/src/index.ts:1077:36)
+    at Object.compile (/Users/DohhyunOh/Documents/PersonalProjects/orpheusMachine/orpheus-machine/backend/node_modules/ts-node/src/index.ts:1433:41)
+    at Module.m._compile (/Users/DohhyunOh/Documents/PersonalProjects/orpheusMachine/orpheus-machine/backend/node_modules/ts-node/src/index.ts:1617:30)
+    at loadTS (node:internal/modules/cjs/loader:1826:10)
+    at Object.require.extensions.<computed> [as .ts] (/Users/DohhyunOh/Documents/PersonalProjects/orpheusMachine/orpheus-machine/backend/node_modules/ts-node/src/index.ts:1621:12)
+    at Module.load (node:internal/modules/cjs/loader:1469:32)
+    at Function._load (node:internal/modules/cjs/loader:1286:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:322:14)
+TSError: ⨯ Unable to compile TypeScript:
+[96msrc/routes/musicRoutes.ts[0m:[93m86[0m:[93m23[0m - [91merror[0m[90m TS7030: [0mNot all code paths return a value.
+
+[7m86[0m router.get('/search', async (req: Request, res: Response, next: NextFunction) => {
+[7m  [0m [91m                      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+    at createTSError (/Users/DohhyunOh/Documents/PersonalProjects/orpheusMachine/orpheus-machine/backend/node_modules/ts-node/src/index.ts:859:12)
+    at reportTSError (/Users/DohhyunOh/Documents/PersonalProjects/orpheusMachine/orpheus-machine/backend/node_modules/ts-node/src/index.ts:863:19)
+    at getOutput (/Users/DohhyunOh/Documents/PersonalProjects/orpheusMachine/orpheus-machine/backend/node_modules/ts-node/src/index.ts:1077:36)
+    at Object.compile (/Users/DohhyunOh/Documents/PersonalProjects/orpheusMachine/orpheus-machine/backend/node_modules/ts-node/src/index.ts:1433:41)
+    at Module.m._compile (/Users/DohhyunOh/Documents/PersonalProjects/orpheusMachine/orpheus-machine/backend/node_modules/ts-node/src/index.ts:1617:30)
+    at loadTS (node:internal/modules/cjs/loader:1826:10)
+    at Object.require.extensions.<computed> [as .ts] (/Users/DohhyunOh/Documents/PersonalProjects/orpheusMachine/orpheus-machine/backend/node_modules/ts-node/src/index.ts:1621:12)
+    at Module.load (node:internal/modules/cjs/loader:1469:32)
+    at Function._load (node:internal/modules/cjs/loader:1286:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:322:14)
+2025-08-18 18:06:32 [ERROR]: uncaughtException: ⨯ Unable to compile TypeScript:
+[96msrc/routes/musicRoutes.ts[0m:[93m86[0m:[93m23[0m - [91merror[0m[90m TS7030: [0mNot all code paths return a value.
+
+[7m86[0m router.get('/search', async (req: Request, res: Response, next: NextFunction) => {
+[7m  [0m [91m                      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+TSError: ⨯ Unable to compile TypeScript:
+[96msrc/routes/musicRoutes.ts[0m:[93m86[0m:[93m23[0m - [91merror[0m[90m TS7030: [0mNot all code paths return a value.
+
+[7m86[0m router.get('/search', async (req: Request, res: Response, next: NextFunction) => {
+[7m  [0m [91m                      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+    at createTSError (/Users/DohhyunOh/Documents/PersonalProjects/orpheusMachine/orpheus-machine/backend/node_modules/ts-node/src/index.ts:859:12)
+    at reportTSError (/Users/DohhyunOh/Documents/PersonalProjects/orpheusMachine/orpheus-machine/backend/node_modules/ts-node/src/index.ts:863:19)
+    at getOutput (/Users/DohhyunOh/Documents/PersonalProjects/orpheusMachine/orpheus-machine/backend/node_modules/ts-node/src/index.ts:1077:36)
+    at Object.compile (/Users/DohhyunOh/Documents/PersonalProjects/orpheusMachine/orpheus-machine/backend/node_modules/ts-node/src/index.ts:1433:41)
+    at Module.m._compile (/Users/DohhyunOh/Documents/PersonalProjects/orpheusMachine/orpheus-machine/backend/node_modules/ts-node/src/index.ts:1617:30)
+    at loadTS (node:internal/modules/cjs/loader:1826:10)
+    at Object.require.extensions.<computed> [as .ts] (/Users/DohhyunOh/Documents/PersonalProjects/orpheusMachine/orpheus-machine/backend/node_modules/ts-node/src/index.ts:1621:12)
+    at Module.load (node:internal/modules/cjs/loader:1469:32)
+    at Function._load (node:internal/modules/cjs/loader:1286:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:322:14)
+TSError: ⨯ Unable to compile TypeScript:
+[96msrc/routes/musicRoutes.ts[0m:[93m86[0m:[93m23[0m - [91merror[0m[90m TS7030: [0mNot all code paths return a value.
+
+[7m86[0m router.get('/search', async (req: Request, res: Response, next: NextFunction) => {
+[7m  [0m [91m                      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+    at createTSError (/Users/DohhyunOh/Documents/PersonalProjects/orpheusMachine/orpheus-machine/backend/node_modules/ts-node/src/index.ts:859:12)
+    at reportTSError (/Users/DohhyunOh/Documents/PersonalProjects/orpheusMachine/orpheus-machine/backend/node_modules/ts-node/src/index.ts:863:19)
+    at getOutput (/Users/DohhyunOh/Documents/PersonalProjects/orpheusMachine/orpheus-machine/backend/node_modules/ts-node/src/index.ts:1077:36)
+    at Object.compile (/Users/DohhyunOh/Documents/PersonalProjects/orpheusMachine/orpheus-machine/backend/node_modules/ts-node/src/index.ts:1433:41)
+    at Module.m._compile (/Users/DohhyunOh/Documents/PersonalProjects/orpheusMachine/orpheus-machine/backend/node_modules/ts-node/src/index.ts:1617:30)
+    at loadTS (node:internal/modules/cjs/loader:1826:10)
+    at Object.require.extensions.<computed> [as .ts] (/Users/DohhyunOh/Documents/PersonalProjects/orpheusMachine/orpheus-machine/backend/node_modules/ts-node/src/index.ts:1621:12)
+    at Module.load (node:internal/modules/cjs/loader:1469:32)
+    at Function._load (node:internal/modules/cjs/loader:1286:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:322:14)
+2025-08-18 18:07:54 [ERROR]: uncaughtException: ⨯ Unable to compile TypeScript:
+[96msrc/routes/musicRoutes.ts[0m:[93m86[0m:[93m23[0m - [91merror[0m[90m TS7030: [0mNot all code paths return a value.
+
+[7m86[0m router.get('/search', async (req: Request, res: Response, next: NextFunction) => {
+[7m  [0m [91m                      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+TSError: ⨯ Unable to compile TypeScript:
+[96msrc/routes/musicRoutes.ts[0m:[93m86[0m:[93m23[0m - [91merror[0m[90m TS7030: [0mNot all code paths return a value.
+
+[7m86[0m router.get('/search', async (req: Request, res: Response, next: NextFunction) => {
+[7m  [0m [91m                      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+    at createTSError (/Users/DohhyunOh/Documents/PersonalProjects/orpheusMachine/orpheus-machine/backend/node_modules/ts-node/src/index.ts:859:12)
+    at reportTSError (/Users/DohhyunOh/Documents/PersonalProjects/orpheusMachine/orpheus-machine/backend/node_modules/ts-node/src/index.ts:863:19)
+    at getOutput (/Users/DohhyunOh/Documents/PersonalProjects/orpheusMachine/orpheus-machine/backend/node_modules/ts-node/src/index.ts:1077:36)
+    at Object.compile (/Users/DohhyunOh/Documents/PersonalProjects/orpheusMachine/orpheus-machine/backend/node_modules/ts-node/src/index.ts:1433:41)
+    at Module.m._compile (/Users/DohhyunOh/Documents/PersonalProjects/orpheusMachine/orpheus-machine/backend/node_modules/ts-node/src/index.ts:1617:30)
+    at loadTS (node:internal/modules/cjs/loader:1826:10)
+    at Object.require.extensions.<computed> [as .ts] (/Users/DohhyunOh/Documents/PersonalProjects/orpheusMachine/orpheus-machine/backend/node_modules/ts-node/src/index.ts:1621:12)
+    at Module.load (node:internal/modules/cjs/loader:1469:32)
+    at Function._load (node:internal/modules/cjs/loader:1286:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:322:14)
+TSError: ⨯ Unable to compile TypeScript:
+[96msrc/routes/musicRoutes.ts[0m:[93m86[0m:[93m23[0m - [91merror[0m[90m TS7030: [0mNot all code paths return a value.
+
+[7m86[0m router.get('/search', async (req: Request, res: Response, next: NextFunction) => {
+[7m  [0m [91m                      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+    at createTSError (/Users/DohhyunOh/Documents/PersonalProjects/orpheusMachine/orpheus-machine/backend/node_modules/ts-node/src/index.ts:859:12)
+    at reportTSError (/Users/DohhyunOh/Documents/PersonalProjects/orpheusMachine/orpheus-machine/backend/node_modules/ts-node/src/index.ts:863:19)
+    at getOutput (/Users/DohhyunOh/Documents/PersonalProjects/orpheusMachine/orpheus-machine/backend/node_modules/ts-node/src/index.ts:1077:36)
+    at Object.compile (/Users/DohhyunOh/Documents/PersonalProjects/orpheusMachine/orpheus-machine/backend/node_modules/ts-node/src/index.ts:1433:41)
+    at Module.m._compile (/Users/DohhyunOh/Documents/PersonalProjects/orpheusMachine/orpheus-machine/backend/node_modules/ts-node/src/index.ts:1617:30)
+    at loadTS (node:internal/modules/cjs/loader:1826:10)
+    at Object.require.extensions.<computed> [as .ts] (/Users/DohhyunOh/Documents/PersonalProjects/orpheusMachine/orpheus-machine/backend/node_modules/ts-node/src/index.ts:1621:12)
+    at Module.load (node:internal/modules/cjs/loader:1469:32)
+    at Function._load (node:internal/modules/cjs/loader:1286:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:322:14)

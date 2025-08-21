@@ -56,23 +56,28 @@ class MusicService {
     }
     async findSongFiles(songTitles) {
         try {
-            const exactMatches = await database_1.database.findSongsByTitles(songTitles);
-            if (exactMatches.length === songTitles.length) {
-                return exactMatches;
-            }
-            const foundTitles = exactMatches.map(song => song.title.toLowerCase() + ' - ' + song.artist.toLowerCase());
-            const missingSongs = songTitles.filter(title => !foundTitles.some(found => found.includes(title.toLowerCase()) || title.toLowerCase().includes(found)));
-            let allSongs = [...exactMatches];
-            for (const missingSong of missingSongs) {
-                logger_1.logger.info(`Searching for alternative matches for: ${missingSong}`);
-                const searchResults = await database_1.database.searchSongs(missingSong, 1);
-                if (searchResults.length > 0 && searchResults[0]) {
-                    allSongs.push(searchResults[0]);
-                    logger_1.logger.info(`Found alternative match: ${searchResults[0].title} - ${searchResults[0].artist}`);
+            logger_1.logger.info(`Searching for songs (including all versions): ${songTitles.join(', ')}`);
+            const allVersions = await database_1.database.findSongsByTitlesWithAllVersions(songTitles);
+            logger_1.logger.info(`Found ${allVersions.length} total song files (including versions)`, {
+                songs: allVersions.map(s => ({ title: s.title, artist: s.artist }))
+            });
+            if (allVersions.length === 0) {
+                let allSongs = [];
+                for (const songTitle of songTitles) {
+                    logger_1.logger.info(`Fuzzy searching for: ${songTitle}`);
+                    const searchResults = await database_1.database.searchSongs(songTitle, 5);
+                    if (searchResults.length > 0) {
+                        for (const result of searchResults) {
+                            const baseTitle = this.extractBaseTitle(result.title);
+                            const versions = await database_1.database.findAllVersionsOfSong(baseTitle);
+                            allSongs.push(...versions);
+                        }
+                    }
                 }
+                const uniqueSongs = allSongs.filter((song, index, arr) => arr.findIndex(s => s.id === song.id) === index);
+                return uniqueSongs;
             }
-            const uniqueSongs = allSongs.filter((song, index, arr) => arr.findIndex(s => s.id === song.id) === index);
-            return uniqueSongs;
+            return allVersions;
         }
         catch (error) {
             logger_1.logger.error('Failed to find song files:', error);
@@ -83,7 +88,7 @@ class MusicService {
         try {
             const downloadPromises = songs.map(async (song) => {
                 logger_1.logger.info(`Downloading MIDI file for: ${song.title} - ${song.artist}`);
-                return await this.s3Service.downloadFile(song.s3_url);
+                return await this.s3Service.downloadFile(song.midi_s3_key);
             });
             const midiFiles = await Promise.all(downloadPromises);
             logger_1.logger.info(`Successfully downloaded ${midiFiles.length} MIDI files`);
@@ -96,7 +101,7 @@ class MusicService {
     }
     async searchSongs(query, limit = 10) {
         try {
-            return await database_1.database.searchSongs(query, limit);
+            return await database_1.database.searchSongsForFrontend(query, limit);
         }
         catch (error) {
             logger_1.logger.error(`Failed to search songs for query: ${query}`, error);
@@ -112,6 +117,9 @@ class MusicService {
             logger_1.logger.error(`Failed to get song by ID: ${songId}`, error);
             throw error;
         }
+    }
+    extractBaseTitle(title) {
+        return title.replace(/\.\d+$/, '').trim();
     }
 }
 exports.MusicService = MusicService;
